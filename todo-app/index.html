@@ -11,14 +11,40 @@
 <body>
     <main>
         <div class="sidebar">
-            <h1>Projects</h1>
+            <h1>My Projects</h1>
+
+            <div class="user-projects">
+                <ul>
+                    <li class="project">Project 1</li>
+                    <p>This is what I am doing today</p>
+                </ul>
+            </div>
+            
             <button class = "add-project">New Project</button>
             <button class="add-to-do">New To-Do</button>
+            
         </div>
+
         <div class="to-do-screen">
             <h1 class="to-do-title">Project 1</h1>
             <h2>Today</h2>
             <h3 class="to-do-description">Description for Project</h3>
+            <div class="to-do">
+                <ul>
+                    <li>
+                        <input type = "checkbox" id="default1" name="checklist" value="defaulttask1">
+                        <label for = "default1">Wake Up</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="default2" name="checklist" value="defaulttask2">
+                        <label for = "default2">Shower</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="default3" name="checklist" value="defaulttask3">
+                        <label for = "default3">Eat Breakfast</label>
+                    </li>
+                </ul>
+            </div>
             <button class = "edit-to-do">Edit</button>
         </div>
     </main>
