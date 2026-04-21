@@ -8,16 +8,6 @@ export function editToDo() {
     });
 }
 
-export function createTodoList(title, description, date, task) {
-    let list = [];
-    return {
-        title: list.push(title),
-        description: list.push(description),
-        date: list.push(date),
-        task: list.push(task)
-    }
-}
-
 export function addProject() {
     const addProjectBtn = document.querySelector('.add-project');
     addProjectBtn.addEventListener('click', () => {
