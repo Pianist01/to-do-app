@@ -56,13 +56,6 @@ export function createProjectForm() {
     projectTitleInput.classList.add('project-title-input');
     projectTitleInput.type = 'text';
 
-    const projectDescriptionLabel = document.createElement('label');
-    projectDescriptionLabel.classList.add('project-description-label');
-    projectDescriptionLabel.textContent = 'Project Description:';
-
-    const projectDescriptionInput = document.createElement('textarea');
-    projectDescriptionInput.classList.add('project-description-input');
-
     const saveProjectBtn = document.createElement('button');
     saveProjectBtn.classList.add('save-project-btn');
     saveProjectBtn.textContent = 'Save Project';
@@ -73,15 +66,37 @@ export function createProjectForm() {
         });
     }
 
-    form.append(projectTitleLabel, projectTitleInput, projectDescriptionLabel, projectDescriptionInput, saveProjectBtn);
+    form.append(projectTitleLabel, projectTitleInput, saveProjectBtn);
     newProjectContainer.append(form);
     main.append(newProjectContainer);
+
+    function createProject() {
+        let project = [];
+        return {
+            addProjectName(name) {
+                project.push(name);
+            },
+            getProject() {
+                return [...project];
+            }
+        }
+    }
+
+    const newProject = createProject();
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('Project Submitted');
+        newProject.addProjectName(projectTitleInput.value);
+        console.log(newProject.getProject());
+        console.log(newProject);
+        form.reset();
+        form.remove();
+        newProjectContainer.remove();
+    })
 }
 
 export function addToDoForm() {
     const main = document.querySelector('main');
-
-    let index = 0;
 
     const addTodoContainer = document.createElement('div');
     addTodoContainer.classList.add('add-todo-container');
@@ -94,26 +109,61 @@ export function addToDoForm() {
     taskLabel.textContent = 'Add Task:';
 
     const todoTaskInput = document.createElement('input');
-    todoTaskInput.classList.add(`todo-task-input-${index}`);
+    todoTaskInput.classList.add('task-input');
     todoTaskInput.type = 'text';
 
-    const addMoreTasksBtn = document.createElement('button');
-    addMoreTasksBtn.classList.add('add-more-tasks-btn');
-    addMoreTasksBtn.textContent = 'Add New Task';
+    const taskDescriptionLabel = document.createElement('label');
+    taskDescriptionLabel.classList.add('task-description-label');
+    taskDescriptionLabel.textContent = 'Task Description:';
+
+    const taskDescriptionInput = document.createElement('textarea');
+    taskDescriptionInput.classList.add('task-description-input');
+
+    const taskDueDateLabel = document.createElement('label');
+    taskDueDateLabel.classList.add('task-due-date-label');
+    taskDueDateLabel.textContent = 'Task Due Date:';
 
     const saveTodoBtn = document.createElement('button');
     saveTodoBtn.classList.add('save-todo-btn');
     saveTodoBtn.textContent = 'Save Task(s)';
 
-    addMoreTasksBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log(`New task input added: ${index}`);
-        index++;
-        todoTaskInput;
-        todoTaskInput.classList.add(`todo-task-input-${index}`);
-    });
+    const taskDueDateInput = document.createElement('input');
+    taskDueDateInput.classList.add('task-due-date-input');
+    taskDueDateInput.type = 'date';
 
-    form.append(taskLabel, todoTaskInput, addMoreTasksBtn, saveTodoBtn);
+    form.append(taskLabel, todoTaskInput, taskDescriptionLabel, taskDescriptionInput, taskDueDateLabel, taskDueDateInput, saveTodoBtn);
     addTodoContainer.append(form);
     main.append(addTodoContainer);
+
+    const toDo = createTask();
+    console.log('Created toDo object:', toDo);
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('Form Submitted');
+        toDo.addTitle(todoTaskInput.value);
+        toDo.addDescription(taskDescriptionInput.value);
+        toDo.addDate(taskDueDateInput.value);
+        console.log(toDo.getList());
+        form.reset();
+        form.remove();
+        addTodoContainer.remove();
+    });
+}
+
+ function createTask() {
+        let list = [];
+        return {
+            addTitle(task) {
+                list.push(task);
+            },
+            addDescription(description) {
+                list.push(description);
+            },
+            addDate(date) {
+                list.push(date);
+            },
+            getList() {
+                return [...list];
+            }
+        }
 }
