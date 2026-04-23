@@ -40,6 +40,9 @@ export function createEditForm() {
 }
 
 export function createProjectForm() {
+
+    let index = 0;
+
     const main = document.querySelector('main');
 
     const newProjectContainer = document.createElement('div');
@@ -85,17 +88,25 @@ export function createProjectForm() {
     const newProject = createProject();
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        index++;
         console.log('Project Submitted');
         newProject.addProjectName(projectTitleInput.value);
         console.log(newProject.getProject());
-        console.log(newProject);
         form.reset();
         form.remove();
         newProjectContainer.remove();
+        const userProjects = document.querySelector('.projects');
+        const projectItem = document.createElement('li');
+        projectItem.classList.add(`project-${index}`);
+        projectItem.textContent = newProject.getProject();
+        userProjects.append(projectItem);
     })
 }
 
 export function addToDoForm() {
+
+    let index = 0;
+
     const main = document.querySelector('main');
 
     const addTodoContainer = document.createElement('div');
@@ -139,6 +150,7 @@ export function addToDoForm() {
     console.log('Created toDo object:', toDo);
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        index++;
         console.log('Form Submitted');
         toDo.addTitle(todoTaskInput.value);
         toDo.addDescription(taskDescriptionInput.value);
@@ -146,6 +158,15 @@ export function addToDoForm() {
         console.log(toDo.getList());
         form.reset();
         form.remove();
+        const todoList = document.querySelector('.todos');
+        const toDoItem = document.createElement('li');
+        const toDoInput = document.createElement('input');
+        toDoInput.type = 'checkbox';
+        const toDoLabel = document.createElement('label');
+        toDoLabel.textContent = ` ${toDo.getList()[0]} - ${toDo.getList()[1]} - Deadline: ${toDo.getList()[2]}`;
+        toDoItem.classList.add(`todo-${index}`);
+        toDoItem.append(toDoInput, toDoLabel);
+        todoList.append(toDoItem);
         addTodoContainer.remove();
     });
 }
