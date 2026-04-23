@@ -72,6 +72,6 @@ main {
     cursor: pointer;
 }
 
-.user-projects ul {
+.user-projects, ul {
     list-style-type: none;
 }
