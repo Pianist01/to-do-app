@@ -1,5 +1,7 @@
-import { editToDo, addProject, addTodo } from "./edit-to-do.js";
+import { addProject, addTodo } from "./edit-to-do.js";
+import { editTask } from "./dom.js";
 
-editToDo();
+// editToDo();
 addProject();
 addTodo();
+editTask();
