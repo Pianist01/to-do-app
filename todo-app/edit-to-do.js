@@ -1,12 +1,12 @@
-import { createEditForm, createProjectForm, addToDoForm } from './dom.js';
+import { createProjectForm, addToDoForm } from './dom.js';
 
-export function editToDo() {
-    const editBtn = document.querySelector('.edit-to-do');
-    editBtn.addEventListener('click', () => {
-        console.log('Edit button clicked');
-        createEditForm();
-    });
-}
+// export function editToDo() {
+//     const editBtn = document.querySelector('.edit-to-do');
+//     editBtn.addEventListener('click', () => {
+//         console.log('Edit button clicked');
+//         createEditForm();
+//     });
+// }
 
 export function addProject() {
     const addProjectBtn = document.querySelector('.add-project');
