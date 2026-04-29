@@ -1,43 +1,43 @@
-export function createEditForm() {
-    const toDoScreen = document.querySelector('.to-do-screen');
+// export function createEditForm() {
+//     const toDoScreen = document.querySelector('.to-do-screen');
 
-    const formContainer = document.createElement('div');
-    formContainer.classList.add('edit-form-container'); 
+//     const formContainer = document.createElement('div');
+//     formContainer.classList.add('edit-form-container'); 
 
-    const form = document.createElement('form');
-    form.classList.add('edit-form');
+//     const form = document.createElement('form');
+//     form.classList.add('edit-form');
 
-    const titleLabel = document.createElement('label');
-    titleLabel.classList.add('edit-title-label');
-    titleLabel.textContent = 'To-Do Title:';
+//     const titleLabel = document.createElement('label');
+//     titleLabel.classList.add('edit-title-label');
+//     titleLabel.textContent = 'To-Do Title:';
 
-    const titleInput = document.createElement('input');
-    titleInput.classList.add('edit-title-input');
-    titleInput.type = 'text';
+//     const titleInput = document.createElement('input');
+//     titleInput.classList.add('edit-title-input');
+//     titleInput.type = 'text';
 
-    const descriptionLabel = document.createElement('label');
-    descriptionLabel.classList.add('edit-description-label');
-    descriptionLabel.textContent = 'To-Do Description:';
+//     const descriptionLabel = document.createElement('label');
+//     descriptionLabel.classList.add('edit-description-label');
+//     descriptionLabel.textContent = 'To-Do Description:';
 
-    const descriptionInput = document.createElement('textarea');
-    descriptionInput.classList.add('edit-description-input');
+//     const descriptionInput = document.createElement('textarea');
+//     descriptionInput.classList.add('edit-description-input');
 
-    const taskLabel = document.createElement('label');
-    taskLabel.classList.add('edit-task-label');
-    taskLabel.textContent = 'Add Task:';
+//     const taskLabel = document.createElement('label');
+//     taskLabel.classList.add('edit-task-label');
+//     taskLabel.textContent = 'Add Task:';
 
-    const taskInput = document.createElement('input');
-    taskInput.classList.add('edit-task-input');
-    taskInput.type = 'text';
+//     const taskInput = document.createElement('input');
+//     taskInput.classList.add('edit-task-input');
+//     taskInput.type = 'text';
 
-    const saveBtn = document.createElement('button');
-    saveBtn.classList.add('save-btn-edit');
-    saveBtn.textContent = 'Save';
+//     const saveBtn = document.createElement('button');
+//     saveBtn.classList.add('save-btn-edit');
+//     saveBtn.textContent = 'Save';
 
-    form.append(titleLabel, titleInput, descriptionLabel, descriptionInput, taskLabel, taskInput, saveBtn);
-    formContainer.append(form);
-    toDoScreen.append(formContainer);
-}
+//     form.append(titleLabel, titleInput, descriptionLabel, descriptionInput, taskLabel, taskInput, saveBtn);
+//     formContainer.append(form);
+//     toDoScreen.append(formContainer);
+// }
 
 export function createProjectForm() {
 
@@ -187,4 +187,48 @@ export function addToDoForm() {
                 return [...list];
             }
         }
+}
+
+export function editTask() {
+    let index = 0;
+
+    const editTaskOne = document.querySelector('.edit-task-1');
+    editTaskOne.addEventListener('click', () => {
+        console.log('Edit 1 Clicked');
+    });
+
+    function createEditForm() {
+        const main = document.querySelector('main');
+
+        const editTaskContainer = document.createElement('div');
+        editTaskContainer.classList.add('edit-task-container');
+
+        const editForm = document.createElement('form');
+        editForm.classList.add('edit-task-form');
+
+        const taskName = document.createElement('label');
+        taskName.classList.add('edit-task-name');
+        taskName.textContent = 'Edit Task Name:';
+
+        const taskNameInput = document.createElement('input');
+        taskNameInput.classList.add('edit-task-name-input');
+        taskNameInput.type = 'text';
+
+        const taskDescription = document.createElement('label');
+        taskDescription.classList.add('edit-task-description');
+        taskDescription.textContent = 'Edit Description:';
+
+        const taskDescriptionInput = document.createElement('textarea');
+        taskDescriptionInput.classList.add('edit-task-description-input');
+        taskDescriptionInput.type = 'text';
+        taskDescriptionInput.placeHolder = 'A description of your To-Do';
+
+        const taskDueDate = document.createElement('label');
+        taskDueDate.classList.add('edit-task-due-date');
+        taskDueDate.textContent = 'Change Due Date:';
+
+        const taskDueDateInput = document.createElement('input');
+        taskDueDateInput.classList.add('edit-task-due-date-input');
+        taskDueDateInput.type = 'date';
+    }
 }
